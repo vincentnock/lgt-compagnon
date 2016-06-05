@@ -1,0 +1,2 @@
+# lgt-compagnon
+App companion pour jouer aux Loup Garous de Thiercelieux dans une ambiance améliorée. Au programme : - Application tablette pour aider le Maître du jeu - Application Android TV pour afficher des informations pendant la journée ou pendant la nuit - Gestion de la lumière via une ampoule LifX connectée - Gestion de la musique diffusée en fonction du jour / de la nuit, ou d'autre paramètres (réveil des loups…)
