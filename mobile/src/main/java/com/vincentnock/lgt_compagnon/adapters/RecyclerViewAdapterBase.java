@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.RealmRecyclerViewAdapter;
+
 /**
  * Created by vincent on 05/03/2015.
  */

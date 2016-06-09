@@ -1,6 +1,6 @@
 package com.vincentnock.lgt_compagnon.fragments;
 
-import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;

@@ -2,9 +2,9 @@ package com.vincentnock.lgt_compagnon;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -35,7 +35,7 @@ import rx.android.schedulers.AndroidSchedulers;
  */
 @EActivity(R.layout.activity_board)
 @OptionsMenu(R.menu.menu_board)
-public class BoardActivity extends Activity {
+public class BoardActivity extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -120,7 +120,7 @@ public class BoardActivity extends Activity {
 
     @OptionsItem
     void menuPlayers() {
-        new PlayersFragment_().show(getFragmentManager(), "players");
+        new PlayersFragment_().show(getSupportFragmentManager(), "players");
     }
 
     private void createUsers() {
