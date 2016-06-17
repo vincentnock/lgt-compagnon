@@ -124,31 +124,31 @@ public class BoardActivity extends AppCompatActivity {
     }
 
     private void createUsers() {
-        List<Player> players = new ArrayList<>();
-
-        players.add(new Player(2, "Amaury", "100011987899127", null));
-        players.add(new Player(1, "Vincent", "587814415", null));
-        players.add(new Player(3, "Kevin", "634197245", null));
-
-        List<Role> roles = new ArrayList<>();
-
-        roles.add(new Role("Loup-Garou", "http://www.cyberfab.fr/gfx/loupsgarous/carte_loups.jpg"));
-        roles.add(new Role("Voyante", "http://www.cyberfab.fr/gfx/loupsgarous/carte_voyante.jpg"));
-        roles.add(new Role("Villageois", "http://www.cyberfab.fr/gfx/loupsgarous/carte_villageois.jpg"));
-        roles.add(new Role("Sorcière", "http://www.cyberfab.fr/gfx/loupsgarous/carte_sorciere.jpg"));
-        roles.add(new Role("Chasseur", "http://www.cyberfab.fr/gfx/loupsgarous/carte_chasseur.jpg"));
-        roles.add(new Role("Cupidon", "http://www.cyberfab.fr/gfx/loupsgarous/carte_cupidon.jpg"));
-        roles.add(new Role("Petite fille", "http://www.cyberfab.fr/gfx/loupsgarous/carte_petite_fille.jpg"));
-        roles.add(new Role("Voleur", "http://www.cyberfab.fr/gfx/loupsgarous/carte_voleur.jpg"));
-
-        Realm realm = Realm.getDefaultInstance();
-
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(players);
-        realm.copyToRealmOrUpdate(roles);
-        realm.commitTransaction();
-
-        Log.d("PLOP", realm.getPath());
+//        List<Player> players = new ArrayList<>();
+//
+//        players.add(new Player(2, "Amaury", "100011987899127", null));
+//        players.add(new Player(1, "Vincent", "587814415", null));
+//        players.add(new Player(3, "Kevin", "634197245", null));
+//
+//        List<Role> roles = new ArrayList<>();
+//
+//        roles.add(new Role("Loup-Garou", "http://www.cyberfab.fr/gfx/loupsgarous/carte_loups.jpg"));
+//        roles.add(new Role("Voyante", "http://www.cyberfab.fr/gfx/loupsgarous/carte_voyante.jpg"));
+//        roles.add(new Role("Villageois", "http://www.cyberfab.fr/gfx/loupsgarous/carte_villageois.jpg"));
+//        roles.add(new Role("Sorcière", "http://www.cyberfab.fr/gfx/loupsgarous/carte_sorciere.jpg"));
+//        roles.add(new Role("Chasseur", "http://www.cyberfab.fr/gfx/loupsgarous/carte_chasseur.jpg"));
+//        roles.add(new Role("Cupidon", "http://www.cyberfab.fr/gfx/loupsgarous/carte_cupidon.jpg"));
+//        roles.add(new Role("Petite fille", "http://www.cyberfab.fr/gfx/loupsgarous/carte_petite_fille.jpg"));
+//        roles.add(new Role("Voleur", "http://www.cyberfab.fr/gfx/loupsgarous/carte_voleur.jpg"));
+//
+//        Realm realm = Realm.getDefaultInstance();
+//
+//        realm.beginTransaction();
+//        realm.copyToRealmOrUpdate(players);
+//        realm.copyToRealmOrUpdate(roles);
+//        realm.commitTransaction();
+//
+//        Log.d("PLOP", realm.getPath());
     }
 
     @Override

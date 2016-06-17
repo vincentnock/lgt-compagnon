@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import com.vincentnock.lgt_compagnon.R;
 import com.vincentnock.lgt_compagnon.adapters.PartiesAdapter;
 import com.vincentnock.lgt_compagnon.models.Party;
+import com.vincentnock.lgt_compagnon.models.events.PartyEvent;
+import com.vincentnock.lgt_compagnon.utils.RecyclerItemClickListener;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -14,6 +16,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Date;
 import java.util.UUID;
@@ -35,10 +38,12 @@ public class PartiesFragment extends Fragment {
     @Bean
     PartiesAdapter adapter;
 
-    Realm realm = Realm.getDefaultInstance();
+    Realm realm;
 
     @AfterViews
     void init() {
+
+        realm = Realm.getDefaultInstance();
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setStackFromEnd(true);
@@ -52,6 +57,10 @@ public class PartiesFragment extends Fragment {
                     adapter.getItems().clear();
                     adapter.getItems().addAll(parties);
                 });
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), (view, position) -> {
+            EventBus.getDefault().post(new PartyEvent(adapter.getItem(position)));
+        }));
     }
 
     @OptionsItem
@@ -65,6 +74,11 @@ public class PartiesFragment extends Fragment {
             recyclerView.scrollToPosition(0);
         });
 
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        realm.close();
     }
 }

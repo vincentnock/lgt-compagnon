@@ -2,12 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:clickable="true"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="@dimen/medium_padding">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/ivPlayer"
@@ -20,8 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/ivPlayer"
-        android:layout_alignLeft="@id/ivPlayer"
-        android:layout_alignRight="@id/ivPlayer"
+        android:layout_alignEnd="@id/ivPlayer"
+        android:layout_alignStart="@id/ivPlayer"
         android:layout_alignTop="@id/ivPlayer"
         android:layout_gravity="center"
         android:padding="@dimen/spacing_normal"
@@ -36,5 +31,13 @@
         android:layout_toEndOf="@+id/ivPlayer"
         android:textSize="@dimen/medium_text_size"
         tools:text="Amaury" />
+
+    <ImageView
+        android:id="@+id/ivRole"
+        android:layout_width="@dimen/thumb_width"
+        android:layout_height="@dimen/thumb_height"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_help_black_24dp"
+        android:tint="@color/colorAccent" />
 
 </RelativeLayout>

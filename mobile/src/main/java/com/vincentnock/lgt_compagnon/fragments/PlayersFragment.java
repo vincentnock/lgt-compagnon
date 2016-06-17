@@ -1,20 +1,22 @@
 package com.vincentnock.lgt_compagnon.fragments;
 
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.vincentnock.lgt_compagnon.R;
 import com.vincentnock.lgt_compagnon.adapters.PlayersAdapter;
 import com.vincentnock.lgt_compagnon.models.Player;
+import com.vincentnock.lgt_compagnon.models.events.PlayersEvent;
+import com.vincentnock.lgt_compagnon.utils.RecyclerItemClickListener;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.EventBus;
 
 import io.realm.Realm;
 import rx.android.schedulers.AndroidSchedulers;
@@ -24,11 +26,13 @@ import rx.android.schedulers.AndroidSchedulers;
  * <p>
  */
 @EFragment(R.layout.fragment_players_list)
-@OptionsMenu(R.menu.menu_board)
-public class PlayersFragment extends DialogFragment {
+public class PlayersFragment extends DialogFragment implements Toolbar.OnMenuItemClickListener {
 
     @ViewById
-    RecyclerView list;
+    RecyclerView recyclerView;
+
+    @ViewById
+    Toolbar toolbar;
 
     @Bean
     PlayersAdapter adapter;
@@ -38,26 +42,40 @@ public class PlayersFragment extends DialogFragment {
 
         Realm realm = Realm.getDefaultInstance();
 
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(adapter);
+
         realm.where(Player.class).findAllAsync().asObservable()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(players -> {
                     adapter.setItems(players);
                 });
 
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), (view, position) -> {
+            adapter.toggleSelection(position);
+        }));
 
-        list.setAdapter(adapter);
+        toolbar.inflateMenu(R.menu.menu_players);
+        toolbar.setOnMenuItemClickListener(this);
+    }
 
+    void menuNewPlayer() {
 
     }
 
+    void menuValid() {
+        EventBus.getDefault().post(new PlayersEvent(adapter.getSelectedItems()));
+        dismiss();
+    }
+
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-
-        menu.clear();
-        inflater.inflate(R.menu.menu_board, menu);
-
-        MenuItem item = menu.findItem(R.id.menuPlayers);
-        menu.add("PLOP");
+    public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.menuAddPlayer) {
+            menuNewPlayer();
+        } else if (item.getItemId() == R.id.menuValid) {
+            menuValid();
+        }
+        return true;
     }
 }

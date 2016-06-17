@@ -1,6 +1,7 @@
 package com.vincentnock.lgt_compagnon.models;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -9,22 +10,24 @@ import io.realm.annotations.PrimaryKey;
 public class Role extends RealmObject {
 
     @PrimaryKey
+    int id;
     public String name;
     public String imagePath;
+    public String description;
+    public int maxCount;
+
+    @Ignore
+    public int currentCount;
 
     public Role() {
     }
 
-    public Role(String name, String imagePath) {
+    public Role(int id, String name, String imagePath, String description, int maxCount) {
+        this.id = id;
         this.name = name;
         this.imagePath = imagePath;
+        this.description = description;
+        this.maxCount = maxCount;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
 }

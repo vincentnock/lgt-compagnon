@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacing_normal">
+
+    <ImageButton
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:background="@null"
+        android:src="@drawable/ic_info_black_24dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/btnInfo"
+        android:textSize="@dimen/font_large"
+        tools:text="Loup-Garou" />
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="+" />
+
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/spacing_normal"
+        android:layout_toStartOf="@+id/btnPlus"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="@dimen/font_large" />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/tvCount"
+        android:text="-" />
+
+</RelativeLayout>

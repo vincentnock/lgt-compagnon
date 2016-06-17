@@ -5,4 +5,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="player">Joueurs</string>
     <string name="new_party">Nouvelle partie</string>
+    <string name="add_player">Ajouter un joueur</string>
+    <string name="new_player">Nouveau joueur</string>
+    <string name="set_roles">Distribuer les rôles</string>
 </resources>

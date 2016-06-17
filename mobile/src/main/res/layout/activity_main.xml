@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vincentnock.lgt_compagnon.MainActivity">
 
-    <fragment
-        android:id="@+id/fParties"
-        android:name="com.vincentnock.lgt_compagnon.fragments.PartiesFragment_"
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_parties" />
-
-    <View
-        android:layout_width="3dp"
-        android:layout_height="match_parent"
-        android:layout_toEndOf="@id/fParties"
-        android:background="@color/gray" />
+    <!--<View-->
+    <!--android:layout_width="3dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_toEndOf="@id/fParties"-->
+    <!--android:background="@color/gray" />-->
 
 </RelativeLayout>
