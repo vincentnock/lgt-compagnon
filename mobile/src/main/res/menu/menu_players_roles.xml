@@ -7,7 +7,18 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menuSeeRoles"
+        android:title="@string/see_roles"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menuSetRoles"
         android:title="@string/set_roles"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menuSaveSMS"
+        android:title="@string/send_sms"
+        app:showAsAction="always" />
+
 </menu>

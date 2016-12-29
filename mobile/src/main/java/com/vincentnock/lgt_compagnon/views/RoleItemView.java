@@ -4,9 +4,11 @@ import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.vincentnock.lgt_compagnon.R;
 import com.vincentnock.lgt_compagnon.models.Role;
 import com.vincentnock.lgt_compagnon.models.events.DecrementRoleEvent;
@@ -28,6 +30,10 @@ public class RoleItemView extends RelativeLayout {
 
     @ViewById
     TextView tvName, tvCount;
+
+    @ViewById
+    ImageView ivRole;
+
 
     @ViewById
     Button btnMinus, btnPlus;
@@ -52,12 +58,14 @@ public class RoleItemView extends RelativeLayout {
 
     public void bind(Role role) {
         this.role = role;
+        Picasso.with(getContext()).load(role.imagePath).into(ivRole);
+        tvName.setText(role.name);
         updateButtons();
     }
 
     void updateButtons() {
         btnMinus.setEnabled(role.currentCount > 0);
-        btnPlus.setEnabled(role.currentCount <= role.maxCount);
+        btnPlus.setEnabled(role.currentCount < role.maxCount);
     }
 
     void updateCount() {

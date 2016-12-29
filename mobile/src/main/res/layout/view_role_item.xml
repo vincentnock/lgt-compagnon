@@ -14,12 +14,18 @@
         android:background="@null"
         android:src="@drawable/ic_info_black_24dp" />
 
+    <ImageView
+        android:id="@+id/ivRole"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toEndOf="@+id/btnInfo"/>
+
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/btnInfo"
+        android:layout_toRightOf="@+id/ivRole"
         android:textSize="@dimen/font_large"
         tools:text="Loup-Garou" />
 

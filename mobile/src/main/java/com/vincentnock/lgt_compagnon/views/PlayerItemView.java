@@ -51,7 +51,7 @@ public class PlayerItemView extends RelativeLayout {
         pbLoading.setVisibility(VISIBLE);
         Picasso picasso = Picasso.with(getContext());
         picasso.setLoggingEnabled(true);
-        picasso.load("https://graph.facebook.com/" + player.facebookID + "/picture?type=large").into(ivPlayer, new Callback() {
+        picasso.load(player.getImageUrl()).into(ivPlayer, new Callback() {
             @Override
             public void onSuccess() {
                 pbLoading.setVisibility(GONE);

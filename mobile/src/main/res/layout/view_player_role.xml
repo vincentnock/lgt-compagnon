@@ -32,12 +32,21 @@
         android:textSize="@dimen/medium_text_size"
         tools:text="Amaury" />
 
+    <Button
+        android:id="@+id/btnShowRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/ivRole"
+        android:text="@string/show_role" />
+
     <ImageView
         android:id="@+id/ivRole"
         android:layout_width="@dimen/thumb_width"
         android:layout_height="@dimen/thumb_height"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_help_black_24dp"
-        android:tint="@color/colorAccent" />
+        android:visibility="invisible"
+        tools:visible="true" />
 
 </RelativeLayout>

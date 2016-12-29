@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.vincentnock.lgt_compagnon.fragments.PlayersFragment_;
@@ -66,6 +65,7 @@ public class BoardActivity extends AppCompatActivity {
     private View mContentView;
     private View mControlsView;
     private boolean mVisible;
+    int partyNumber = 1;
 
     public BoardActivity() {
         mHidePart2Runnable = () -> {
@@ -82,14 +82,11 @@ public class BoardActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         };
 
-        mDelayHideTouchListener = new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (AUTO_HIDE) {
-                    delayedHide(AUTO_HIDE_DELAY_MILLIS);
-                }
-                return false;
+        mDelayHideTouchListener = (view, motionEvent) -> {
+            if (AUTO_HIDE) {
+                delayedHide(AUTO_HIDE_DELAY_MILLIS);
             }
+            return false;
         };
 
         mHideRunnable = this::hide;
@@ -121,6 +118,11 @@ public class BoardActivity extends AppCompatActivity {
     @OptionsItem
     void menuPlayers() {
         new PlayersFragment_().show(getSupportFragmentManager(), "players");
+    }
+
+    @OptionsItem
+    void menuSendSMS() {
+
     }
 
     private void createUsers() {
@@ -221,6 +223,7 @@ public class BoardActivity extends AppCompatActivity {
         realm.executeTransaction(realm1 -> {
             Party party = realm.createObject(Party.class);
             party.uuid = UUID.randomUUID().toString();
+            party.number = partyNumber++;
 
             for (int i = 0; i < players.size(); i++) {
                 PlayerRole playerRole = realm.createObject(PlayerRole.class);

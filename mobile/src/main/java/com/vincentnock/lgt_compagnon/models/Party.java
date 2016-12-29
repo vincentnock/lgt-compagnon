@@ -20,6 +20,8 @@ public class Party extends RealmObject {
 
     public RealmList<PlayerRole> playerRoles;
 
+    public int number;
+
 
     public CharSequence getCreatedAtFormatted() {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE dd MMM HH:mm", Locale.FRANCE);

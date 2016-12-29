@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.vincentnock.lgt_compagnon.R;
 import com.vincentnock.lgt_compagnon.adapters.PlayersAdapter;
 import com.vincentnock.lgt_compagnon.models.Player;
+import com.vincentnock.lgt_compagnon.models.events.PlayerEvent;
 import com.vincentnock.lgt_compagnon.models.events.PlayersEvent;
 import com.vincentnock.lgt_compagnon.utils.RecyclerItemClickListener;
 
@@ -17,6 +18,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import io.realm.Realm;
 import rx.android.schedulers.AndroidSchedulers;
@@ -61,7 +63,7 @@ public class PlayersFragment extends DialogFragment implements Toolbar.OnMenuIte
     }
 
     void menuNewPlayer() {
-
+        new AddPlayerFragment_().show(getFragmentManager(), "add_player");
     }
 
     void menuValid() {
@@ -69,9 +71,15 @@ public class PlayersFragment extends DialogFragment implements Toolbar.OnMenuIte
         dismiss();
     }
 
+    @Subscribe
+    public void onNewPlayer(PlayerEvent event) {
+        adapter.addEntity(0, event.player);
+        adapter.toggleSelection(0);
+    }
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.menuAddPlayer) {
+        if (item.getItemId() == R.id.menuNewPlayer) {
             menuNewPlayer();
         } else if (item.getItemId() == R.id.menuValid) {
             menuValid();

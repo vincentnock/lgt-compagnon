@@ -13,23 +13,31 @@ public class Player extends RealmObject {
     @PrimaryKey
     public int id;
 
+    public String uuid;
     public String name;
     public String facebookID;
     public String imagePath;
+    public String phoneNumber;
 
     public Player() {
     }
 
-    public Player(int id, String name, String facebookID, String imagePath) {
+    public Player(int id, String name, String facebookID, String imagePath, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.facebookID = facebookID;
         this.imagePath = imagePath;
+        this.phoneNumber = phoneNumber;
     }
 
-    public Uri getImageUri() {
+    private String getFacebookImageUrl() {
+        return "https://graph.facebook.com/" + facebookID + "/picture?type=large";
+    }
 
-        Uri myUri = Uri.parse("https://graph.facebook.com/" + facebookID + "/picture?type=large");
-        return myUri;
+    public String getImageUrl() {
+        if (imagePath != null)
+            return imagePath;
+        else
+            return getFacebookImageUrl();
     }
 }

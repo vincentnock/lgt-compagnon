@@ -8,4 +8,9 @@
     <string name="add_player">Ajouter un joueur</string>
     <string name="new_player">Nouveau joueur</string>
     <string name="set_roles">Distribuer les rôles</string>
+    <string name="see_roles">Voir les rôles</string>
+    <string name="show_role">Montrer</string>
+    <string name="close">Fermer</string>
+    <string name="not_connected">Not connected</string>
+    <string name="send_sms">Envoyer les sms</string>
 </resources>
